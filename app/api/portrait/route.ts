@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { fetchWalletStats, deriveTags, type WalletStats } from "@/lib/etherscan";
 
-export const runtime = "edge";
+// 不再用 edge runtime —— OpenNext Cloudflare 适配器不支持
+// (走默认 Node.js runtime,在 CF Workers 上通过 nodejs_compat flag 跑)
+export const dynamic = "force-dynamic";
 
 const ADDR_RE = /^0x[a-fA-F0-9]{40}$/;
 
